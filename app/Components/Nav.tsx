@@ -1,9 +1,6 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
 
 const Nav = () => {
-  const [login, setLogin] = useState<boolean>(false);
   return (
     <header className="bg-gray-500 text-white-200 w-full">
       <nav className="flex justify-between items-center w-full sm:px-6 sm:py-4 text-xs sm:text-sm lg:text-md p-1 max-[400px]:flex-col ">
@@ -21,16 +18,16 @@ const Nav = () => {
             Home
           </Link>
           <Link
-            href="/Employees"
+            href="/employees"
             className="hover:px-3 rounded-md hover:bg-grey-200 hover:border-2 focus:border-b px-2 active:border-b active:text-yellow-500"
           >
             Employees
           </Link>
           <Link
-            href="/Login"
+            href="/login"
             className="hover:px-3 rounded-md hover:bg-grey-200 hover:border-2 focus:border-b px-2 active:border-b active:text-yellow-500"
           >
-            {login ? "Sign out" : "Login"}
+            Login
           </Link>
         </div>
       </nav>
