@@ -1,6 +1,6 @@
 import { getAllEmployees } from "@/lib/getAllEmployees";
-import Addform from "../Components/AddForm";
-import { Navigator } from "../Components/Navigator";
+import Addform from "../components/AddForm";
+import { Navigator } from "../components/Navigator";
 export const dynamic = "force-dynamic"; // Forces server-side rendering
 
 export const metadata = {
