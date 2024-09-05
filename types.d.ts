@@ -17,4 +17,5 @@ type MyEmployee = {
   employmentStartDate: string;
   dateOfBirth: string;
   educationalLevel: string;
+  _id: string;
 };
