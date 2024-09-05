@@ -3,6 +3,18 @@ import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
 import { createEmployee } from "@/lib/createEmployee";
 
+const enum JobRoles {
+  SOFTWARE_ENGINEER = "SOFTWARE_ENGINEER",
+  PRODUCT_MANAGER = "PRODUCT_MANAGER",
+  DESIGNER = "DESIGNER",
+  SOFTWARE_TESTER = "SOFTWARE_TESTER",
+}
+const enum Gender {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+  OTHER = "OTHER",
+}
+
 const Addform = () => {
   const [newEmployee, setNewEmployee] = useState<Employee>({
     accountName: "",
@@ -41,7 +53,7 @@ const Addform = () => {
     <div>
       <div className="flex justify-between mx-10 my-6">
         <p className="pt-4 text-center w-3/5">
-          {isHidden ? "Have a new Employee?" : "Click to return the form"}
+          {isHidden ? "Add a new Employee?" : "Click to return the form"}
         </p>
         <button
           className="bg-green-500 p-4 rounded-lg"
@@ -63,7 +75,7 @@ const Addform = () => {
               type="text"
               name="firstName"
               id="firstName"
-              placeholder="Joe"
+              placeholder="First name"
               value={newEmployee.firstName}
               onChange={handleChange}
             />
@@ -128,7 +140,7 @@ const Addform = () => {
               type="text"
               name="bankName"
               id="bankName"
-              placeholder="Abc bank"
+              placeholder="Bank name"
               value={newEmployee.bankName}
               onChange={handleChange}
             />
@@ -186,7 +198,7 @@ const Addform = () => {
                 name="gender"
                 id="gender"
                 value="MALE"
-                checked={newEmployee.gender === "MALE"}
+                checked={newEmployee.gender === Gender.MALE}
                 onChange={handleChange}
               />
               <label htmlFor="gender">FEMALE</label>
@@ -197,7 +209,7 @@ const Addform = () => {
                 name="gender"
                 id="gender"
                 value="FEMALE"
-                checked={newEmployee.gender === "FEMALE"}
+                checked={newEmployee.gender === Gender.FEMALE}
                 onChange={handleChange}
               />
               <label htmlFor="gender">MALE</label>
@@ -262,10 +274,12 @@ const Addform = () => {
               }
             >
               <option value="">Select an option</option>
-              <option value="SOFTWARE ENGINEER">Software Engineer</option>
-              <option value="SOFTWARE TESTER">Software Tester</option>
-              <option value="UI/UX DESIGNER">Product Designer</option>
-              <option value="PRODUCT MANAGER">Product Manager</option>
+              <option value={JobRoles.SOFTWARE_ENGINEER}>
+                Software Engineer
+              </option>
+              <option value={JobRoles.SOFTWARE_TESTER}>Software Tester</option>
+              <option value={JobRoles.DESIGNER}>Product Designer</option>
+              <option value={JobRoles.PRODUCT_MANAGER}>Product Manager</option>
             </select>
           </div>
           <div className="p-2">

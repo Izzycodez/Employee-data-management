@@ -13,17 +13,14 @@ export const createEmployee = async (employeeData: Employee) => {
     console.log("Access Token:", accessToken);
     console.log("Employee Data:", employeeData);
 
-    const res = await fetch(
-      "https://employee-management-api-xj3a.onrender.com/employees",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify(employeeData),
-      }
-    );
+    const res = await fetch(process.env.NEXT_PUBLIC_EMPLOYEE_API as string, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(employeeData),
+    });
 
     if (!res.ok) {
       const errorData = await res.json();

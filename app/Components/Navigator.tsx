@@ -10,5 +10,9 @@ export const Navigator = ({
   text: string;
 }) => {
   const router = useRouter();
-  return <p onClick={() => router.push(pathDirection)}>{text}</p>;
+  return (
+    <p onClick={() => router.push(pathDirection)} className="cursor-pointer">
+      {text}
+    </p>
+  );
 };
