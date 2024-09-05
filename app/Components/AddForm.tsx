@@ -18,7 +18,6 @@ const enum Gender {
 const Addform = () => {
   const [newEmployee, setNewEmployee] = useState<Employee>({
     accountName: "",
-    _id: "",
     bankAccountNumber: 0,
     bankName: "",
     dateOfBirth: "",

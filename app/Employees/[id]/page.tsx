@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getEmployee } from "@/lib/getEmployee";
 
 export const generateMetadata = ({ params }: Props): Metadata => {
   return {
@@ -8,8 +9,10 @@ export const generateMetadata = ({ params }: Props): Metadata => {
 type Props = {
   params: { id: string };
 };
-function page({ params }: Props) {
+async function EmployeePage({ params }: Props) {
+  const employee: MyEmployee[] = await getEmployee(params.id);
+  console.log(employee);
   return <div>page {params.id}</div>;
 }
 
-export default page;
+export default EmployeePage;
