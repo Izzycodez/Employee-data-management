@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
 import { createEmployee } from "@/lib/createEmployee";
 
@@ -26,7 +26,7 @@ const Addform = () => {
   });
   const [isHidden, setIsHidden] = useState<boolean>(true);
   const formStyle: string = "px-1 md:p-2 border w-full";
-  async function handleAdd(e: any) {
+  async function handleAdd(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     createEmployee(newEmployee);
   }
