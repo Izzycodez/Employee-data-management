@@ -1,14 +1,15 @@
 import { cookies } from "next/headers";
+import { BASE_API_URL } from "@/config";
 
-export const getEmployee = async (id: string): Promise<MyEmployee[]> => {
+export const getEmployee = async (id: string): Promise<MyEmployee> => {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("token")?.value;
 
   if (!accessToken) {
     throw new Error("No access token found.");
   }
-
-  const res = await fetch(process.env.NEXT_PUBLIC_EMPLOYEE_API as string, {
+  const API: string = `${BASE_API_URL}/${id}`;
+  const res = await fetch(API, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
