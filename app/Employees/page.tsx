@@ -1,5 +1,6 @@
 import { getAllEmployees } from "@/lib/getAllEmployees";
-import Link from "next/link";
+import Addform from "../components/AddForm";
+import { Navigator } from "../components/Navigator";
 export const dynamic = "force-dynamic"; // Forces server-side rendering
 
 export const metadata = {
@@ -21,12 +22,15 @@ const EmployeePage = async () => {
                 key={employee.firstName}
               >
                 {`${employee.firstName} ${employee.lastName}`} <br />
-                <Link href={`/${employee.firstName}`}>SEE MORE</Link>
+                <Navigator
+                  pathDirection={`/employees/${employee._id}`}
+                  text={`Go to ${employee.firstName}'s profile to see more`}
+                />
               </li>
             ))}
           </ul>
-          <p>hello ....</p>
         </section>
+        <Addform />
       </div>
     );
   } catch (error) {

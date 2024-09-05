@@ -14,7 +14,7 @@ const CreateUser = () => {
     try {
       const accessToken = await loginEmployee(email, password);
       console.log("Logged in with token:", accessToken);
-      router.push("/Employees");
+      router.push("/employees");
     } catch (error) {
       console.error("Login failed:", error);
       // Handle the error (e.g., show a message to the user)
@@ -62,7 +62,7 @@ const CreateUser = () => {
       </form>
       <p>
         Don’t have an account yet? Click here to{" "}
-        <Link href="/Register" className="text-blue-700">
+        <Link href="/register" className="text-blue-700">
           Register...
         </Link>
       </p>
