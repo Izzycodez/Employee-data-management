@@ -6,9 +6,9 @@ const Nav = () => {
   const navStyles =
     "hover:px-3 rounded-md hover:bg-grey-200  hover:border-2  px-2";
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Employees", href: "/employees" },
-    { name: "Login", href: "/login" },
+    { name: "Home", href: "/app" },
+    { name: "Employees", href: "/Employees" },
+    { name: "Login", href: "/Login" },
   ];
   const pathName = usePathname();
 
@@ -23,7 +23,7 @@ const Nav = () => {
         </Link>
         <div className="flex gap-2 sm:gap-3 md:gap-10 text-white ">
           {navLinks.map((navLink) => {
-            const isActive = pathName.endsWith(navLink.href);
+            const isActive = pathName.startsWith(navLink.href);
             return (
               <Link
                 href={navLink.href}

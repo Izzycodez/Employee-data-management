@@ -34,7 +34,7 @@ async function EmployeePage({ params }: Props) {
           Employment Start Date: {employee.employmentStartDate} <br />
           Birthday: {employee.dateOfBirth} <br />
           Education level: {employee.educationalLevel} <br />
-          <Link href={"/employees"} className="text-blue-400">
+          <Link href={"/Employees"} className="text-blue-400">
             Go back to the previous page
           </Link>
         </div>

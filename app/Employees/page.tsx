@@ -1,6 +1,6 @@
 import { getAllEmployees } from "@/lib/getAllEmployees";
-import Addform from "../components/AddForm";
-import { Navigator } from "../components/Navigator";
+import Addform from "../Components/AddForm";
+import { Navigator } from "../Components/Navigator";
 export const dynamic = "force-dynamic"; // Forces server-side rendering
 
 export const metadata = {
@@ -23,7 +23,7 @@ const EmployeePage = async () => {
               >
                 {`${employee.firstName} ${employee.lastName}`} <br />
                 <Navigator
-                  pathDirection={`/employees/${employee._id}`}
+                  pathDirection={`/Employees/${employee._id}`}
                   text={`Go to ${employee.firstName}'s profile to see more`}
                 />
               </li>

@@ -200,7 +200,7 @@ const Addform = () => {
                 checked={newEmployee.gender === Gender.MALE}
                 onChange={handleChange}
               />
-              <label htmlFor="gender">FEMALE</label>
+              <label htmlFor="gender">MALE</label>
               <br />
               <input
                 type="radio"
@@ -211,7 +211,7 @@ const Addform = () => {
                 checked={newEmployee.gender === Gender.FEMALE}
                 onChange={handleChange}
               />
-              <label htmlFor="gender">MALE</label>
+              <label htmlFor="gender">FEMALE</label>
               <br />
             </fieldset>
           </div>
