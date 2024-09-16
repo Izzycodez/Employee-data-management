@@ -23,14 +23,11 @@ const CreateUser = () => {
 
   return (
     <div className="w-72 mx-auto mt-20">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full p-0 md:border-4 md:w-72 md:p-8"
-      >
+      <form onSubmit={handleSubmit}>
         <label htmlFor="address">Email address:</label>
         <br />
         <input
-          className="px-1 my-1 md:my-3 md:p-3 border w-full"
+          className="input input-bordered w-full max-w-xs"
           type="email"
           name="address"
           id="address"
@@ -46,7 +43,7 @@ const CreateUser = () => {
           type="password"
           required
           name="password"
-          className="px-1 my-1 md:my-3 md:p-3 border w-full"
+          className="input input-bordered w-full max-w-xs"
           id="password"
           placeholder="********"
           value={password}

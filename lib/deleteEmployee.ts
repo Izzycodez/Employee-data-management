@@ -1,26 +1,31 @@
-import { cookies } from "next/headers";
+"use server";
 import { BASE_API_URL } from "@/config";
-
-export const getEmployee = async (id: string): Promise<MyEmployee> => {
+import { cookies } from "next/headers";
+export const deleteEmployee = async (id: string) => {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("token")?.value;
+  console.log(accessToken);
 
   if (!accessToken) {
     throw new Error("No access token found.");
   }
+
   const API: string = `${BASE_API_URL}/${id}`;
   const res = await fetch(API, {
-    method: "GET",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     },
-    next: { revalidate: 20 },
+    body: JSON.stringify({
+      id: id,
+    }),
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data...");
+    const errorData = await res.json();
+    const errorMessage = errorData.message || "Failed to delete employee.";
+    throw new Error(errorMessage);
   }
-
-  return res.json();
 };
+//  const accessToken = document.cookie.split("=")[1].trim();

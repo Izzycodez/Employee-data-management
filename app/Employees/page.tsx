@@ -1,6 +1,6 @@
 import { getAllEmployees } from "@/lib/getAllEmployees";
-import Addform from "../components/AddForm";
-import { Navigator } from "../components/Navigator";
+import { Navigator } from "../component/Navigator";
+import Link from "next/link";
 export const dynamic = "force-dynamic"; // Forces server-side rendering
 
 export const metadata = {
@@ -9,28 +9,43 @@ export const metadata = {
 
 const EmployeePage = async () => {
   try {
-    const employees: MyEmployee[] = await getAllEmployees();
+    const employees: MyEmployee[] = (await getAllEmployees()).reverse();
 
     return (
-      <div className="border-2 w-4/5 mx-auto my-4 p-4 max-sm:bg-red-800 max-md:w-full">
-        <h1 className="text-center text-4xl">Welcome to Sleeky Programmers</h1>
+      <div className="border-2 w-fit mx-auto my-4 p-4  max-md:w-full">
+        <h1 className="text-center text-4xl mb-3">
+          Welcome to Sleeky Programmers
+        </h1>
+        <div className="text-right mt-4">
+          <button className="btn btn-success">
+            <Link href={"/employees/create-employee"}>
+              Click to add a new Employee
+            </Link>
+          </button>
+        </div>
         <section>
-          <ul className="grid grid-cols-2 text-xl ">
+          <div className="grid grid-cols-2 max-lg:grid-cols-1">
             {employees.map((employee) => (
-              <li
-                className="border-2 rounded-lg m-3 p-4 "
+              <div
+                className="card bg-indigo-400 text-white w-96 m-4 "
                 key={employee.firstName}
               >
-                {`${employee.firstName} ${employee.lastName}`} <br />
-                <Navigator
-                  pathDirection={`/employees/${employee._id}`}
-                  text={`Go to ${employee.firstName}'s profile to see more`}
-                />
-              </li>
+                <div className="card-body ">
+                  <h2 className="card-title underline">{`${employee.firstName} ${employee.lastName}`}</h2>
+                  <p>A {employee.employmentRole} at SleekyProgrammers</p>
+                  <div className="card-actions justify-end">
+                    <button className="btn">
+                      <Navigator
+                        pathDirection={`/employees/${employee._id}`}
+                        text={`Go to ${employee.firstName}'s profile to see more`}
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
-        <Addform />
       </div>
     );
   } catch (error) {

@@ -1,7 +1,9 @@
 "use server";
 import { cookies } from "next/headers";
 
-export const createEmployee = async (employeeData: Employee) => {
+export const createEmployee = async (
+  employeeData: MyEmployee
+): Promise<MyEmployee> => {
   try {
     const cookieStore = cookies();
     const accessToken = cookieStore.get("token")?.value;
@@ -22,7 +24,7 @@ export const createEmployee = async (employeeData: Employee) => {
       body: JSON.stringify(employeeData),
     });
 
-    if (!res.ok) {
+    if (res.status !== 200) {
       const errorData = await res.json();
       console.error("Error Response:", errorData);
       throw new Error("Failed to create employee.");
@@ -32,4 +34,5 @@ export const createEmployee = async (employeeData: Employee) => {
   } catch (error) {
     console.error("Error:", error);
   }
+  return employeeData;
 };

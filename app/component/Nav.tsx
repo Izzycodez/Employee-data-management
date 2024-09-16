@@ -23,7 +23,10 @@ const Nav = () => {
         </Link>
         <div className="flex gap-2 sm:gap-3 md:gap-10 text-white ">
           {navLinks.map((navLink) => {
-            const isActive = pathName.endsWith(navLink.href);
+            const isActive =
+              navLink.href === "/"
+                ? pathName === "/"
+                : pathName.startsWith(navLink.href);
             return (
               <Link
                 href={navLink.href}

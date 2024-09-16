@@ -1,6 +1,6 @@
 type MyEmployee = {
   firstName: string;
-  _id: string;
+  _id?: string;
   lastName: string;
   emailAddress: string;
   phoneNumber: string;
